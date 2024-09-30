@@ -20,7 +20,6 @@
                 <!-- Blog Post (Right Sidebar) Start -->
                 <?php include_once '../app/views/templates/partials/_main.php' ?>
 
-
                 <!-- Footer Start -->
                 <?php include_once '../app/views/templates/partials/_footer.php' ?>
                 <!-- Footer End -->
