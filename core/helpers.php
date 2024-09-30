@@ -11,3 +11,12 @@ function truncate(string $string, int $lg_max = 100): string
     }
     return $string;
 }
+
+function formatDate(string $date): string
+{
+    // Convertir la date en timestamp
+    $timestamp = strtotime($date);
+
+    // Retourner la date au format 'Y-m-d'
+    return date('Y-m-d', $timestamp);
+}
