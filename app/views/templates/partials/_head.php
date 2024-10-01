@@ -10,7 +10,8 @@
 <meta name="copyright" content="company name" />
 <meta name="robots" content="index,follow" />
 
-<title>DevBlog - <?php echo $title ?></title>
+<title>Alex Parker - <?php echo $title ?></title>
+<base href="<?php echo BASE_PUBLIC_URL ?>">
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon/favicon.ico" />
@@ -19,6 +20,7 @@
     sizes="144x144"
     type="image/x-icon"
     href="images/favicon/apple-touch-icon.png" />
+
 
 <!-- All CSS Plugins -->
 <link rel="stylesheet" type="text/css" href="css/plugin.css" />

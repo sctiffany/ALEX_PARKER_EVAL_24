@@ -10,8 +10,20 @@ function indexAction(PDO $connexion)
     $posts = \App\Models\PostsModel\findAll($connexion);
 
     global $content, $title;
-    $title = "Page d'accueil";
+    $title = "Blog";
     ob_start();
     include "../app/views/posts/index.php";
+    $content = ob_get_clean();
+}
+
+function showAction(PDO $connexion, int $id)
+{
+    include_once '../app/models/postsModel.php';
+    $post = \App\Models\PostsModel\findOneById($connexion, $id);
+
+    global $content, $title;
+    $title = $post['title'];
+    ob_start();
+    include '../app/views/posts/show.php';
     $content = ob_get_clean();
 }
