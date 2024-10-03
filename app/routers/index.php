@@ -1,6 +1,6 @@
 <?php
-// ROUTE DES BOOKS
-// PATTERN : /?books
+// ROUTE DES POSTS
+// PATTERN : /?posts
 if (isset($_GET['posts'])) {
     include '../app/routers/posts.php';
 } else {

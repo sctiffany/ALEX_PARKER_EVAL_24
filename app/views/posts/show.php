@@ -1,9 +1,4 @@
-<div class="sub-title">
-    <a href="index.html" title="Go to Home Page">
-        <h2>Back Home</h2>
-    </a>
-    <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
-</div>
+<?php include '../app/views/posts/_backHome.php' ?>
 
 <div class="col-md-12 content-page">
     <div class="col-md-12 blog-post">

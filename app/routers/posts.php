@@ -14,4 +14,12 @@ switch ($_GET['posts']):
         //TITLE: Alex Parker - Title du post
         PostsController\showAction($connexion, $_GET['id']);
         break;
+    case 'addForm':
+        //PATTERN: posts/add/form.html
+        //URL: index.php?posts=addForm
+        //CTRL: postsController
+        //ACTION: addForm
+        //TITLE: Alex Parker - Add a post
+        PostsController\addFormAction();
+        break;
 endswitch;

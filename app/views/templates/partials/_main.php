@@ -6,9 +6,6 @@
                 <?php echo $content ?>
                 <!-- Blog Post End -->
 
-
-
-
             </div>
         </div>
     </div>
