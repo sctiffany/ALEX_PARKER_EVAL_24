@@ -6,7 +6,7 @@
                 <?php echo $content ?>
                 <!-- Blog Post End -->
 
-                <?php include_once '../app/views/templates/partials/_nav.php' ?>
+
 
 
             </div>

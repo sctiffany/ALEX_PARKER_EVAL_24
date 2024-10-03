@@ -1,7 +1,7 @@
 <?php include_once '../app/views/templates/partials/_buttonAddPost.php' ?>
 <?php foreach ($posts as $post): ?>
     <div class="col-md-12 blog-post row">
-        <div class="<?php echo $post['title'] ?>">
+        <div class="post-title">
             <a href="posts/<?php echo $post['postID'] ?>/<?php echo \Core\Helpers\slugify($post['title']) ?>.html">
                 <h1>
                     <?php echo $post['title'] ?>
@@ -22,3 +22,4 @@
                       "><span>Read More</span></a>
     </div>
 <?php endforeach; ?>
+<?php include_once '../app/views/templates/partials/_nav.php' ?>
