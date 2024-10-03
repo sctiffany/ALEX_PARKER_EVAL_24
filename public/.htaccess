@@ -6,7 +6,6 @@ RewriteEngine on
 #--------------------------------------------------
 
 # DETAILS D'UN POST
-# POSTS.SHOW
 # PATTERN: /posts/{id}/{slug}.html
 # URL: index.php?posts=show&id=xxx
 RewriteRule ^posts/([1-9][0-9]*)/[a-z0-9\-]+.html$ index.php?posts=show&id=$1 [L]
@@ -16,6 +15,10 @@ RewriteRule ^posts/([1-9][0-9]*)/[a-z0-9\-]+.html$ index.php?posts=show&id=$1 [L
 # URL : index.php?posts=addForm
 RewriteRule ^posts\/add\/form.html$ index.php?posts=addForm [L]
 
+# AJOUT D'UN POST : INSERT
+# PATTERN : posts/add/insert.html
+# URL : index.php?posts=addInsert
+RewriteRule ^posts\/add\/insert.html$ index.php?posts=addInsert [L]
 
 # --------------------------------------------------
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]

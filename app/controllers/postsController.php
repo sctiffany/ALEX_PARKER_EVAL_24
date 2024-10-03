@@ -28,11 +28,22 @@ function showAction(PDO $connexion, int $id)
     $content = ob_get_clean();
 }
 
-function addFormAction()
+function addFormAction(PDO $connexion)
 {
+    include_once '../app/models/categoriesModel.php';
+    $categories = \App\Models\CategoriesModel\findAll($connexion);
+
     global $content, $title;
     $title = "Add a post";
     ob_start();
     include '../app/views/posts/addForm.php';
     $content = ob_get_clean();
+}
+
+function addInsertAction(PDO $connexion, array $data = null)
+{
+    include_once '../app/models/postsModel.php';
+    $id = \App\Models\PostsModel\insertOne($connexion, $data);
+
+    header('Location: ' . BASE_PUBLIC_URL);
 }
