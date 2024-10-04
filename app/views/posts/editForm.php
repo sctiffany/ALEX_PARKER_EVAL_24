@@ -8,7 +8,7 @@
         <!-- Post Headline End -->
 
         <!-- Form Start -->
-        <form action="posts/<?php echo $post['postID'] ?>/<?php echo \Core\Helpers\slugify($post['title']) ?>/edit/form.html" method="post">
+        <form action="posts/<?php echo $post['postID'] ?>/<?php echo \Core\Helpers\slugify($post['title']) ?>/edit/update.html" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input
@@ -47,8 +47,8 @@
                     id="category"
                     name="category_id"
                     class="form-control">
-                    <option selected>
-                        <?php echo $post['name'] ?>
+                    <option value="<?php echo $post['category_id']; ?>" selected>
+                        <?php echo $post['name']; ?>
                     </option>
                     <?php foreach ($categories as $category): ?>
                         <option value="<?php echo $category['id'] ?>"><?php echo $category['name'] ?></option>

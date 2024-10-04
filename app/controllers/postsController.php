@@ -62,3 +62,12 @@ function editFormAction(PDO $connexion, int $id)
     include_once '../app/views/posts/editForm.php';
     $content = ob_get_clean();
 }
+
+function editUpdateAction(PDO $connexion, int $id, array $data = null)
+{
+
+    include_once '../app/models/postsModel.php';
+    $return = \App\Models\PostsModel\updateOneById($connexion, $id, $data);
+
+    header('Location: ' . BASE_PUBLIC_URL);
+}

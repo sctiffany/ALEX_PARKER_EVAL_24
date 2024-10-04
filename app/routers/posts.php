@@ -46,4 +46,13 @@ switch ($_GET['posts']):
         //TITLE: Alex Parker - Edit a post
         PostsController\editFormAction($connexion, $_GET['id']);
         break;
+
+    case 'editUpdate':
+        //PATTERN: /posts/id/slug-du-post/edit/update.html
+        //URL: index.php?posts=editUpdate&id=x
+        //CTRL: postsController
+        //ACTION: editUpdate
+        //TITLE: Redirection page accueil
+        PostsController\editUpdateAction($connexion, $_GET['id'], $_POST);
+        break;
 endswitch;
