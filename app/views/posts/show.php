@@ -36,7 +36,7 @@
         <div>
             <a href="posts/<?php echo $post['postID'] ?>/<?php echo \Core\Helpers\slugify($post['title']) ?>/edit/form.html" type="button" class="btn btn-primary">Edit Post</a>
             <a
-                href="#"
+                href="posts/<?php echo $post['postID'] ?>/<?php echo \Core\Helpers\slugify($post['title']) ?>/delete.html"
                 type="button"
                 class="btn btn-secondary"
                 role="button">Delete Post</a>

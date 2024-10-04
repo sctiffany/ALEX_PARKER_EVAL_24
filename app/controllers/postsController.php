@@ -71,3 +71,11 @@ function editUpdateAction(PDO $connexion, int $id, array $data = null)
 
     header('Location: ' . BASE_PUBLIC_URL);
 }
+
+function deleteAction(PDO $connexion, int $id)
+{
+    include_once '../app/models/postsModel.php';
+    $return = \App\Models\PostsModel\deleteOneById($connexion, $id);
+
+    header('Location: ' . BASE_PUBLIC_URL);
+}

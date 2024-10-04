@@ -55,4 +55,8 @@ switch ($_GET['posts']):
         //TITLE: Redirection page accueil
         PostsController\editUpdateAction($connexion, $_GET['id'], $_POST);
         break;
+
+    case 'delete':
+        PostsController\deleteAction($connexion, $_GET['id']);
+        break;
 endswitch;
