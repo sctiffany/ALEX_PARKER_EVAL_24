@@ -20,6 +20,11 @@ RewriteRule ^posts\/add\/form.html$ index.php?posts=addForm [L]
 # URL : index.php?posts=addInsert
 RewriteRule ^posts\/add\/insert.html$ index.php?posts=addInsert [L]
 
+# MODIFICATION D'UN POST : FORMULAIRE
+# PATTERN : /posts/id/slug-du-post/edit/form.html
+# URL : index.php?posts=editForm&id=x
+RewriteRule ^posts\/([1-9][0-9]*)\/[a-z0-9\-]+\/edit\/form.html$ index.php?posts=editForm&id=$1 [L]
+
 # --------------------------------------------------
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
 RewriteRule ^(.*)$ index.php [L]

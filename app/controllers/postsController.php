@@ -47,3 +47,18 @@ function addInsertAction(PDO $connexion, array $data = null)
 
     header('Location: ' . BASE_PUBLIC_URL);
 }
+
+function editFormAction(PDO $connexion, int $id)
+{
+    include_once '../app/models/postsModel.php';
+    $post = \App\Models\PostsModel\findOneById($connexion, $id);
+
+    include_once '../app/models/categoriesModel.php';
+    $categories = \App\Models\CategoriesModel\findAll($connexion);
+
+    global $content, $title;
+    $title = "Edit a post";
+    ob_start();
+    include_once '../app/views/posts/editForm.php';
+    $content = ob_get_clean();
+}

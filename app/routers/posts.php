@@ -37,4 +37,13 @@ switch ($_GET['posts']):
             'category_id' => $_POST['category_id'],
         ]);
         break;
+
+    case 'editForm':
+        //PATTERN: /posts/id/slug-du-post/edit/form.html
+        //URL: index.php?posts=editForm&id=x
+        //CTRL: postsController
+        //ACTION: editForm
+        //TITLE: Alex Parker - Edit a post
+        PostsController\editFormAction($connexion, $_GET['id']);
+        break;
 endswitch;
