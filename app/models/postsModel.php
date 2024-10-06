@@ -4,17 +4,26 @@ namespace App\Models\PostsModel;
 
 use \PDO;
 
-function findAll(PDO $connexion, int $limit = 10): array
+function findAll(PDO $connexion, int $limit = 3, int $offset = 0): array
 {
     $sql = "SELECT *, p.id AS postID, c.id AS categoryID
             FROM posts p
             INNER JOIN categories c ON p.category_id = c.id
             ORDER BY p.created_at DESC
-            LIMIT :limit;";
+            LIMIT :limit 
+            OFFSET :offset;";
     $rs = $connexion->prepare($sql);
     $rs->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $rs->bindValue(':offset', $offset, PDO::PARAM_INT);
     $rs->execute();
     return $rs->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function countAll(PDO $connexion): int
+{
+    $sql = "SELECT COUNT(*) AS total FROM posts;";
+    $rs = $connexion->query($sql);
+    return $rs->fetch(PDO::FETCH_ASSOC)['total'];
 }
 
 function findOneById(PDO $connexion, int $id): array

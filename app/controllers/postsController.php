@@ -4,10 +4,16 @@ namespace App\Controllers\PostsController;
 
 use \PDO;
 
-function indexAction(PDO $connexion)
+function indexAction(PDO $connexion, int $page = 1)
 {
     include_once "../app/models/postsModel.php";
-    $posts = \App\Models\PostsModel\findAll($connexion);
+
+    $limit = 3;
+    $offset = ($page - 1) * $limit;
+
+    $posts = \App\Models\PostsModel\findAll($connexion, $limit, $offset);
+    $totalPosts = \App\Models\PostsModel\countAll($connexion);
+    $totalPages = ceil($totalPosts / $limit);
 
     global $content, $title;
     $title = "Blog";
@@ -15,6 +21,7 @@ function indexAction(PDO $connexion)
     include "../app/views/posts/index.php";
     $content = ob_get_clean();
 }
+
 
 function showAction(PDO $connexion, int $id)
 {

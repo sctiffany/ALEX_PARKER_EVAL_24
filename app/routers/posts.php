@@ -59,4 +59,12 @@ switch ($_GET['posts']):
     case 'delete':
         PostsController\deleteAction($connexion, $_GET['id']);
         break;
+
+    case 'page':
+        // PATTERN: /posts/page/x
+        // URL: index.php?posts=page&page=x
+        // CTRL: postsController
+        // ACTION: index (pour afficher la page x des posts)
+        PostsController\indexAction($connexion, $_GET['page']);
+        break;
 endswitch;
