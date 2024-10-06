@@ -6,7 +6,7 @@ use \PDO;
 
 function findAll(PDO $connexion, int $limit = 3, int $offset = 0): array
 {
-    $sql = "SELECT *, p.id AS postID, c.id AS categoryID
+    $sql = "SELECT *, p.id AS postID, c.id AS categoryID, p.created_at AS postCreationDate
             FROM posts p
             INNER JOIN categories c ON p.category_id = c.id
             ORDER BY p.created_at DESC
@@ -38,7 +38,7 @@ function findOneById(PDO $connexion, int $id): array
     return $rs->fetch(PDO::FETCH_ASSOC);
 }
 
-function insertOne(PDO $connexion, array $data = null)
+function insertOne(PDO $connexion, array $data = null): int
 {
     $sql = "INSERT INTO posts
             SET title = :title,
@@ -59,7 +59,7 @@ function insertOne(PDO $connexion, array $data = null)
 }
 
 
-function updateOneById(PDO $connexion, int $id, array $data = null)
+function updateOneById(PDO $connexion, int $id, array $data = null): bool
 {
     $sql = "UPDATE posts
             SET title = :title,
@@ -78,7 +78,7 @@ function updateOneById(PDO $connexion, int $id, array $data = null)
     return $rs->execute();
 }
 
-function deleteOneById(PDO $connexion, int $id)
+function deleteOneById(PDO $connexion, int $id): bool
 {
     $sql = "DELETE FROM posts
             WHERE id = :id;";

@@ -3,7 +3,7 @@
 <div class="col-md-12 content-page">
     <div class="col-md-12 blog-post">
         <div>
-            <img src="images/blog/<?php echo $post['image']; ?>" alt="<?php echo $post['title']; ?>">
+            <img src="../public/images/blog/<?php echo $post['image']; ?>" alt="<?php echo $post['title']; ?>">
         </div>
 
         <!-- Post Headline Start -->

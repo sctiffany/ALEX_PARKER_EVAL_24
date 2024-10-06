@@ -57,6 +57,11 @@ switch ($_GET['posts']):
         break;
 
     case 'delete':
+        //PATTERN: /posts/id/slug-du-post/delete.html
+        //URL: index.php?posts=delete&id=x
+        //CTRL: postsController
+        //ACTION: delete
+        //TITLE: Redirection page accueil
         PostsController\deleteAction($connexion, $_GET['id']);
         break;
 
