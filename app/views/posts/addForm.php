@@ -8,7 +8,7 @@
         <!-- Post Headline End -->
 
         <!-- Form Start -->
-        <form action="posts/add/insert.html" method="post">
+        <form action="posts/add/insert.html" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1"> Image</label>
-                <input type="file" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+                <input type="file" name="image" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
             </div>
             <div class="form-group">
                 <label for="text">Quote</label>

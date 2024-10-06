@@ -8,7 +8,7 @@
         <!-- Post Headline End -->
 
         <!-- Form Start -->
-        <form action="posts/<?php echo $post['postID'] ?>/<?php echo \Core\Helpers\slugify($post['title']) ?>/edit/update.html" method="post">
+        <form action="posts/<?php echo $post['postID'] ?>/<?php echo \Core\Helpers\slugify($post['title']) ?>/edit/update.html" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input

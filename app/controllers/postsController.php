@@ -49,11 +49,30 @@ function addFormAction(PDO $connexion)
 
 function addInsertAction(PDO $connexion, array $data = null)
 {
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $temporaryImagePath = $_FILES['image']['tmp_name']; // Chemin temporaire du fichier image uploadé
+        $uploadedImageName = basename($_FILES['image']['name']); // Nom du fichier image uploadé (sans le chemin)
+        $targetUploadDirectory = '../public/images/blog/'; // Dossier cible où l'image sera enregistrée
+        $finalImagePath = $targetUploadDirectory . $uploadedImageName; // Chemin complet où l'image sera déplacée
+
+        // Déplacez le fichier uploadé vers le dossier cible
+        if (move_uploaded_file($temporaryImagePath, $finalImagePath)) {
+            // Si l'upload réussit, ajoutez le chemin de l'image aux données à insérer
+            $data['image'] = $finalImagePath; // Ajout du chemin de l'image au tableau de données
+        } else {
+            // Si l'upload échoue, affichez une erreur
+            die('Échec de l\'upload de l\'image.');
+        }
+    } else {
+        // Si aucune image n'a été uploadée ou une erreur est survenue
+        die('Aucune image uploadée ou une erreur est survenue.');
+    }
+
     include_once '../app/models/postsModel.php';
     $id = \App\Models\PostsModel\insertOne($connexion, $data);
-
     header('Location: ' . BASE_PUBLIC_URL);
 }
+
 
 function editFormAction(PDO $connexion, int $id)
 {
