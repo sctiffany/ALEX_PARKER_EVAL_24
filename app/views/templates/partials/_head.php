@@ -21,6 +21,9 @@
     type="image/x-icon"
     href="images/favicon/apple-touch-icon.png" />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
 <!-- All CSS Plugins -->
 <link rel="stylesheet" type="text/css" href="css/plugin.css" />

@@ -51,9 +51,7 @@ function addInsertAction(PDO $connexion, array $data = null)
 {
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $temporaryImagePath = $_FILES['image']['tmp_name']; // Chemin temporaire du fichier image uploadé
-        $uploadedImageName = basename($_FILES['image']['name']); // Nom du fichier image uploadé (sans le chemin)
-        $targetUploadDirectory = '../public/images/blog/'; // Dossier cible où l'image sera enregistrée
-        $finalImagePath = $targetUploadDirectory . $uploadedImageName; // Chemin complet où l'image sera déplacée
+        $finalImagePath = basename($_FILES['image']['name']); // Nom du fichier image uploadé (sans le chemin)
 
         // Déplacez le fichier uploadé vers le dossier cible
         if (move_uploaded_file($temporaryImagePath, $finalImagePath)) {
@@ -91,12 +89,36 @@ function editFormAction(PDO $connexion, int $id)
 
 function editUpdateAction(PDO $connexion, int $id, array $data = null)
 {
-
+    // Récupérer l'image existante dans la base de données avant de procéder à la mise à jour
     include_once '../app/models/postsModel.php';
-    $return = \App\Models\PostsModel\updateOneById($connexion, $id, $data);
+    $existingPost = \App\Models\PostsModel\findOneById($connexion, $id);
 
-    header('Location: ' . BASE_PUBLIC_URL);
+    // Vérifiez si une nouvelle image a été uploadée
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $temporaryImagePath = $_FILES['image']['tmp_name'];
+        $uploadedImageName = basename($_FILES['image']['name']);
+        $targetUploadDirectory = '../public/images/blog/';
+        $finalImagePath = $targetUploadDirectory . $uploadedImageName;
+
+        // Déplacez le fichier uploadé vers le dossier cible
+        if (move_uploaded_file($temporaryImagePath, $finalImagePath)) {
+            $data['image'] = $finalImagePath; // Utilisez le nouveau chemin d'image
+        } else {
+            die('Échec de l\'upload de l\'image.');
+        }
+    } else {
+        // Si aucune nouvelle image n'est uploadée, conserver l'image existante
+        $data['image'] = $existingPost['image'];
+    }
+
+    // Mettez à jour le post avec les nouvelles données
+    if (\App\Models\PostsModel\updateOneById($connexion, $id, $data)) {
+        header('Location: ' . BASE_PUBLIC_URL);
+    } else {
+        die('Échec de la mise à jour du post.');
+    }
 }
+
 
 function deleteAction(PDO $connexion, int $id)
 {

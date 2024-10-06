@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1"> Image</label>
-                <input type="file" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+                <input type="file" name="image" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
             </div>
             <div class="form-group">
                 <label for="text">Quote</label>
