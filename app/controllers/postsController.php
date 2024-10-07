@@ -110,7 +110,7 @@ function editUpdateAction(PDO $connexion, int $id, array $data = null)
 
     // Mettez à jour le post avec les nouvelles données
     $update = \App\Models\PostsModel\updateOneById($connexion, $id, $data);
-    header('Location: ' . BASE_PUBLIC_URL);
+    header('Location: ' . BASE_PUBLIC_URL . 'posts/' . $id . '/' . \Core\Helpers\slugify($data['title']) . 'html');
 }
 
 
